@@ -9,9 +9,9 @@ namespace AgendaCorreios.DependencyInjection
         {
             string connectionString = config["ConnectionStrings:DefaultConnection"];
 
-            // Configure EF Core with Oracle
+            // Configure EF Core with SQL Server
             services.AddDbContext<MyDbContext>(options =>
-                options.UseOracle(connectionString));
+            options.UseSqlServer(connectionString));
 
             // Add repository classes
             services.AddScoped<IUserRepository, UserRepository>();
