@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.css';
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+  background-color: #222;
+  color: #fff;
+}
+
+.container {
+  margin-top: 40px;
+}
+
+.card {
+  background-color: #333;
+  color: #fff;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.contact-actions .btn {
+  margin-left: 5px;
+}
+
+.floating-add-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.expanded-card {
+  background-color: #444;
+  color: #fff;
+  cursor: pointer;
+}
+
+.additional-info {
+  display: none;
+}
+
+.expanded-card .additional-info {
+  display: block;
+}

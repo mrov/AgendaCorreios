@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using Models.DTOs.Output;
 using Repository;
 
 namespace AgendaCorreios.Controllers
@@ -16,14 +17,14 @@ namespace AgendaCorreios.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUsers()
+        public async Task<ActionResult<List<UserAddressDTO>>> GetAllUsers()
         {
             var users = await _userRepository.GetAllUsers();
             return Ok(users);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        public async Task<ActionResult<UserAddressDTO>> GetUserById(int id)
         {
             var user = await _userRepository.GetUserById(id);
             if (user == null)

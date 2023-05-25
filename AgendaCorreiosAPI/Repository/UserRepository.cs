@@ -9,8 +9,8 @@ namespace Repository
 {
     public interface IUserRepository
     {
-        Task<List<User>> GetAllUsers();
-        Task<User> GetUserById(int id);
+        Task<List<UserAddressDTO>> GetAllUsers();
+        Task<UserAddressDTO> GetUserById(int id);
         Task CreateUser(User user);
         Task UpdateUser(User user);
         Task DeleteUser(int id);
@@ -28,14 +28,21 @@ namespace Repository
             _context = context;
         }
 
-        public async Task<List<User>> GetAllUsers()
+        public async Task<List<UserAddressDTO>> GetAllUsers()
         {
-            return await _context.Users.Include(u => u.Address).ToListAsync();
+            var users = await _context.Users.Include(u => u.Address).ToListAsync();
+            var userFormatted = _mapper.Map<List<UserAddressDTO>>(users);
+
+            return userFormatted;
         }
 
-        public async Task<User> GetUserById(int id)
+        public async Task<UserAddressDTO> GetUserById(int id)
         {
-            return await _context.Users.Include(u => u.Address).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(u => u.Address).FirstOrDefaultAsync(u => u.Id == id);
+
+            var userFormatted = _mapper.Map<UserAddressDTO>(user);
+
+            return userFormatted;
         }
 
         public async Task CreateUser(User user)
